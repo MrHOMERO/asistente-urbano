@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Asistente Personal Urbano</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div class="app-viewport">
+    
+    <!-- ENCABEZADO -->
+    <header class="app-header">
+      <h1>Asistente Central</h1>
+      <p id="assistant-status">Presiona el micrófono o habla...</p>
+    </header>
+
+    <!-- PANEL PRINCIPAL DE RESUMEN -->
+    <main class="dashboard">
+      
+      <!-- Tarjeta de Próximo Vencimiento -->
+      <section class="card alert-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-info">
+          <h3>Próximo Vencimiento</h3>
+          <p class="highlight">Factura de UTE: $ 2.850</p>
+          <small>Vence: 15 de Septiembre</small>
+        </div>
+        <button class="btn-action" id="btn-pay-location">Ver Abitab / Redpagos</button>
+      </section>
+
+      <!-- Tarjeta de Mantenimiento Vehicular -->
+      <section class="card info-card">
+        <div class="card-icon">🏍️</div>
+        <div class="card-info">
+          <h3>Mantenimiento de Vehículo</h3>
+          <p>Próximo Service: 15.000 km</p>
+          <small>Último cambio de aceite: 12.000 km</small>
+        </div>
+      </section>
+
+      <!-- Buzón de Facturas Cargadas -->
+      <section class="card list-card">
+        <h3>Documentos y Facturas</h3>
+        <ul id="doc-list">
+          <li>📄 UTE_Septiembre.pdf <span class="tag-status pending">Pendiente</span></li>
+          <li>📄 OSE_Agosto.pdf <span class="tag-status paid">Pagado</span></li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- ÁREA DE ACCIÓN RÁPIDA (CÁMARA Y ARCHIVOS) -->
+    <div class="quick-actions">
+      <label for="camera-input" class="action-btn">
+        📷 Escanear Factura
+        <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden-input">
+      </label>
+      <label for="pdf-input" class="action-btn secondary">
+        📂 Subir PDF
+        <input type="file" id="pdf-input" accept="application/pdf" class="hidden-input">
+      </label>
+    </div>
+
+    <!-- BOTÓN DE VOZ PRINCIPAL -->
+    <div class="voice-container">
+      <button id="btn-voice" class="voice-btn">
+        <span class="mic-icon">🎙️</span>
+      </button>
+      <span class="voice-label">Toca para hablar</span>
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
